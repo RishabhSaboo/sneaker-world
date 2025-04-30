@@ -1,0 +1,27 @@
+<%layout('layouts/boilerplate')%>
+
+<body class="page">
+  <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="col-md-6 col-lg-5 bg-light p-4 rounded shadow">
+      <%- include('../partials/flash') %>
+      <h1 class="display-6 mb-4 text-center">Log In</h1>
+
+      <form action="/login" method="POST">
+        <div class="mb-3">
+          <label class="form-label" for="username">Username:</label>
+          <input class="form-control" type="text" name="username" id="username" placeholder="username">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="password">Password:</label>
+          <input class="form-control" type="password" name="password" id="password" placeholder="password">
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Log In</button>
+        <p class="fw-light mt-3 text-center">
+          Don’t have an account? <a href="/register">Sign Up</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</body>

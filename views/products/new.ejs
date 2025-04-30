@@ -1,0 +1,59 @@
+<%layout('layouts/boilerplate')%>
+<%- include('../partials/navbar') %>
+<body class="edit_page">
+    <div class="container">
+        <div class="col-md-6 col-lg-5">
+            <h1>Add New Product</h1>
+
+            <form action="/products" method="POST" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label class="form-label" for="Name">Product Name:</label>
+                    <input type="text" name="name" id="naam" class="form-control" placeholder="Enter product name" required>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please provide a valid product name.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="Price">Price (in INR):</label>
+                    <input type="number" name="price" id="rate" class="form-control" placeholder="Enter product price" required>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please provide a valid price.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="Image">Image URL:</label>
+                    <input type="text" name="img" id="img" class="form-control" placeholder="Enter product image URL" required>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please provide a valid image URL.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="desc">Description:</label>
+                    <textarea name="desc" id="desc" placeholder="Describe the product" class="form-control" required></textarea>
+                    <div class="valid-feedback">Looks good!</div>
+                    <div class="invalid-feedback">Please provide a product description.</div>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100">Add Product</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript for Bootstrap validation -->
+    <script>
+        (() => {
+            'use strict'
+            const forms = document.querySelectorAll('.needs-validation');
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })()
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<%layout('layouts/boilerplate')%>
+<%- include('../partials/navbar')%>
+<%- include('../partials/flash')%>
+
+<body>
+    <div class="row">
+
+        <% for(let item of products) { %>
+           <div class="col-lg-4 mt-3">
+            <div class="card mx-auto shadow" style="width: 18rem;">
+                <img src="<%= item.img %>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h2 class="card-title"><%= item.name %></h5>
+                  <h5 class="card-title"><%= item.price %></h5>
+                  <p class="card-text"><%= item.desc %></p>
+                  <a href="./products/<%= item._id %>" class="btn btn-info">View Product</a>
+                  <%if(currentUser && currentUser.role=='seller'){%>
+                   <form class="d-inline-block" action="/products/<%= item._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger">Delete</button>
+                   </form>
+                  <%}%>
+                  <%if(currentUser){%>
+                  <button class="btn btn-outline-danger like-btn" data-id="<%= item._id %>"> ❤️ <span class="like-count"><%= item.likes.length %></span></button>
+                  <%}%>
+                </div>
+              </div>
+            </div>
+         <% } %>
+</div>
+        
+<script src="/js/common.js"></script></script>  
+
+</body> 
+</html>
