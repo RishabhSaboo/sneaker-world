@@ -1,10 +1,16 @@
-<%layout('layouts/boilerplate')%>
-<%- include('../partials/navbar')%>
+<% layout('layouts/boilerplate') %>
+<%- include('../partials/navbar') %>
 
+<h1>Your Cart</h1>
 
-<%for (let item of user.cart){%>
-    <ul>
-        <li><%=item.name%></li>
-        <li><%=item.price%></li>
-    </ul>
-<%}%>
+<div class="cart-container">
+  <% for (let item of user.cart) { %>
+    <div class="cart-item">
+      <img src="<%= item.img%>" alt="<%= item.name %>" width="150" height="150" />
+      <ul>
+        <li><strong>Name:</strong> <%= item.name %></li>
+        <li><strong>Price:</strong> ₹<%= item.price %></li>
+      </ul>
+    </div>
+  <% } %>
+</div>
