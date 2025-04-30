@@ -61,6 +61,11 @@ app.use((req,res,next)=>{
   next();
 })
 
+app.get('/', (req, res) => {
+  res.redirect('/products');; // Make sure you have views/home.ejs
+});
+
+
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
